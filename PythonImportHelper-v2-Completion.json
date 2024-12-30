@@ -1,0 +1,207 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "webdriver",
+        "importPath": "selenium",
+        "description": "selenium",
+        "isExtraImport": true,
+        "detail": "selenium",
+        "documentation": {}
+    },
+    {
+        "label": "By",
+        "importPath": "selenium.webdriver.common.by",
+        "description": "selenium.webdriver.common.by",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.common.by",
+        "documentation": {}
+    },
+    {
+        "label": "WebDriverWait",
+        "importPath": "selenium.webdriver.support.ui",
+        "description": "selenium.webdriver.support.ui",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support.ui",
+        "documentation": {}
+    },
+    {
+        "label": "expected_conditions",
+        "importPath": "selenium.webdriver.support",
+        "description": "selenium.webdriver.support",
+        "isExtraImport": true,
+        "detail": "selenium.webdriver.support",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "pymongo",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "setup_driver",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def setup_driver():\n    driver = webdriver.Chrome()\n    return driver\ndef get_random_proxy():\n    with open('proxies.txt', 'r') as f:\n        proxies = f.readlines()\n    return random.choice(proxies).strip()\ndef fetch_trending_topics():\n    driver = setup_driver()\n    result_dict = {}",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_random_proxy",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_random_proxy():\n    with open('proxies.txt', 'r') as f:\n        proxies = f.readlines()\n    return random.choice(proxies).strip()\ndef fetch_trending_topics():\n    driver = setup_driver()\n    result_dict = {}\n    try:\n        driver.get(\"https://x.com/login\")\n        WebDriverWait(driver, 10).until(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_trending_topics",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def fetch_trending_topics():\n    driver = setup_driver()\n    result_dict = {}\n    try:\n        driver.get(\"https://x.com/login\")\n        WebDriverWait(driver, 10).until(\n            EC.visibility_of_element_located((By.CSS_SELECTOR, \"input[name='text']\"))\n        ).send_keys(\"upenderlakhwan\")\n        WebDriverWait(driver, 10).until(\n            EC.element_to_be_clickable((By.XPATH, \"//span[text()='Next']\"))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "mongo_json_serializer",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def mongo_json_serializer(obj):\n    if isinstance(obj, ObjectId):\n        return str(obj) \n    raise TypeError(f\"Type {type(obj)} not serializable\")\n@app.route('/')\ndef index():\n    return render_template('index.html')\n@app.route('/run-script')\ndef run_script():\n    trending_topics = fetch_trending_topics()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/run-script')\ndef run_script():\n    trending_topics = fetch_trending_topics()\n    now = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    ip_address = get_random_proxy()\n    trend_names = [trend for trend in trending_topics.values()]\n    # print(trending_topics)\n    # print(trend_names)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "run_script",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def run_script():\n    trending_topics = fetch_trending_topics()\n    now = datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\n    ip_address = get_random_proxy()\n    trend_names = [trend for trend in trending_topics.values()]\n    # print(trending_topics)\n    # print(trend_names)\n    last_record = collection.find().sort(\"timestamp\", -1).limit(1)\n    json_record = {}\n    for record in last_record:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\nclient = pymongo.MongoClient(\"mongodb+srv://lakhwanus009:MqLqLwDq79sOBZjh@cluster0.3qimy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0\")\ndb = client[\"trending_db\"]\ncollection = db[\"trends\"]\ndef setup_driver():\n    driver = webdriver.Chrome()\n    return driver\ndef get_random_proxy():\n    with open('proxies.txt', 'r') as f:\n        proxies = f.readlines()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "client = pymongo.MongoClient(\"mongodb+srv://lakhwanus009:MqLqLwDq79sOBZjh@cluster0.3qimy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0\")\ndb = client[\"trending_db\"]\ncollection = db[\"trends\"]\ndef setup_driver():\n    driver = webdriver.Chrome()\n    return driver\ndef get_random_proxy():\n    with open('proxies.txt', 'r') as f:\n        proxies = f.readlines()\n    return random.choice(proxies).strip()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "db = client[\"trending_db\"]\ncollection = db[\"trends\"]\ndef setup_driver():\n    driver = webdriver.Chrome()\n    return driver\ndef get_random_proxy():\n    with open('proxies.txt', 'r') as f:\n        proxies = f.readlines()\n    return random.choice(proxies).strip()\ndef fetch_trending_topics():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "collection = db[\"trends\"]\ndef setup_driver():\n    driver = webdriver.Chrome()\n    return driver\ndef get_random_proxy():\n    with open('proxies.txt', 'r') as f:\n        proxies = f.readlines()\n    return random.choice(proxies).strip()\ndef fetch_trending_topics():\n    driver = setup_driver()",
+        "detail": "app",
+        "documentation": {}
+    }
+]
